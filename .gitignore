@@ -1,0 +1,12 @@
+# Installierte Pakete
+node_modules/
+ 
+# Erzeugte Build-Dateien
+dist/
+ 
+# Lokale Umgebungsdateien
+.env
+.env.local
+ 
+# Protokolle
+*.log
