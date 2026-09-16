@@ -104,15 +104,6 @@ h1 {
     color: #94a3b8
 }
 
-.table {
-    height: 480px;
-    position: relative;
-    border: 1px solid #ffffff1a;
-    border-radius: 32px;
-    background: #064e3b88;
-    box-shadow: 0 20px 50px #0008
-}
-
 .op {
     position: absolute;
     text-align: center
@@ -194,45 +185,32 @@ h1 {
 }
 
 .thrown.bottom {
-    bottom: 0;
-    left: 40%;
+    bottom: 30px;
+    left: 50%;
     transform: translateX(-50%)
 }
 
 .thrown.top {
-    top: 32px;
-    left: 40%;
+    top: 30px;
+    left: 50%;
     transform: translateX(-50%)
 }
 
 .thrown.left {
-    left: -12px;
-    top: 52%;
+    left: 40px;
+    top: 50%;
     transform: translateY(-50%)
 }
 
 .thrown.right {
-    right: -12px;
-    top: 52%;
+    right: 40px;
+    top: 50%;
     transform: translateY(-50%)
 }
 
-.playing-card {
-    position: relative;
-    width: 96px;
-    height: 144px;
-    flex: 0 0 auto;
-    background: #f8fafc;
-    border: 2px solid #cbd5e1;
-    border-radius: 16px;
-    padding: 9px;
-    text-align: left;
-    box-shadow: 0 5px 12px #0005
-}
-
 .playing-card.small {
-    width: 64px;
-    height: 96px
+    scale: 0.6;
+    transform-origin: center;
 }
 
 .playing-card.black {
@@ -260,17 +238,9 @@ h1 {
     font-weight: 900
 }
 
-.symbol {
-    display: block;
-    font-size: 27px
-}
 
-.symbol.bottom {
-    position: absolute;
-    right: 8px;
-    bottom: 7px;
-    transform: rotate(180deg)
-}
+
+
 
 .message {
     position: absolute;
@@ -423,6 +393,496 @@ h1 {
     color: #fb7185
 }
 
+.playing-card {
+    position: relative;
+    width: 96px;
+    height: 144px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    padding: 6px;
+    background: #fffafa;
+    border: 2px solid #f5b4b4;
+    border-radius: 16px;
+    box-shadow: 0 5px 12px #0005;
+}
+
+/* Angaben oben links und unten rechts */
+.card-corner {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+.card-corner-top {
+    top: 7px;
+    left: 7px;
+}
+
+.card-corner-bottom {
+    right: 7px;
+    bottom: 7px;
+    transform: rotate(180deg);
+}
+
+.card-corner .rank {
+    font-size: 18px;
+}
+
+/* Bereich für die Symbole der Zahlenkarten */
+.card-pips {
+    position: absolute;
+    top: 29px;
+    right: 15px;
+    bottom: 29px;
+    left: 15px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* 2 Symbole */
+.pip-count-2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* 3 Symbole */
+.pip-count-3 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* 4 Symbole */
+.pip-count-4 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 12px;
+    row-gap: 12px;
+}
+
+/* 6 Symbole */
+.pip-count-6 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* 5, 7 und 9 werden einzeln positioniert */
+.pip-count-5,
+.pip-count-7,
+.pip-count-8,
+.pip-count-9,
+.pip-count-10 {
+    display: block;
+}
+
+.pip-count-5 .pip,
+.pip-count-8 .pip,
+.pip-count-7 .pip,
+.pip-count-9 .pip,
+.pip-count-10 .pip {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.pip-count-5 .pip-1 {
+    top: 10%;
+    left: 20%;
+}
+
+.pip-count-5 .pip-2 {
+    top: 10%;
+    left: 80%;
+}
+
+.pip-count-5 .pip-3 {
+    top: 90%;
+    left: 20%;
+}
+
+.pip-count-5 .pip-4 {
+    top: 90%;
+    left: 80%;
+}
+
+.pip-count-5 .pip-5 {
+    top: 50%;
+    left: 50%;
+}
+
+.pip-count-7 .pip-1 {
+    top: 8%;
+    left: 20%;
+}
+
+.pip-count-7 .pip-2 {
+    top: 8%;
+    left: 80%;
+}
+
+.pip-count-7 .pip-3 {
+    top: 50%;
+    left: 20%;
+}
+
+.pip-count-7 .pip-4 {
+    top: 50%;
+    left: 80%;
+}
+
+.pip-count-7 .pip-5 {
+    top: 92%;
+    left: 20%;
+}
+
+.pip-count-7 .pip-6 {
+    top: 92%;
+    left: 80%;
+}
+
+.pip-count-7 .pip-7 {
+    top: 28%;
+    left: 50%;
+}
+
+/* 8: wie die 6, plus zwei Symbole in der Mitte */
+.pip-count-8 .pip-1 {
+    top: 8%;
+    left: 20%;
+}
+
+.pip-count-8 .pip-2 {
+    top: 8%;
+    left: 80%;
+}
+
+.pip-count-8 .pip-3 {
+    top: 50%;
+    left: 20%;
+}
+
+.pip-count-8 .pip-4 {
+    top: 50%;
+    left: 80%;
+}
+
+.pip-count-8 .pip-5 {
+    top: 92%;
+    left: 20%;
+}
+
+.pip-count-8 .pip-6 {
+    top: 92%;
+    left: 80%;
+}
+
+.pip-count-8 .pip-7 {
+    top: 30%;
+    left: 50%;
+}
+
+.pip-count-8 .pip-8 {
+    top: 70%;
+    left: 50%;
+}
+
+.pip-count-9 .pip-1 {
+    top: 5%;
+    left: 20%;
+}
+
+.pip-count-9 .pip-2 {
+    top: 5%;
+    left: 80%;
+}
+
+.pip-count-9 .pip-3 {
+    top: 35%;
+    left: 20%;
+}
+
+.pip-count-9 .pip-4 {
+    top: 35%;
+    left: 80%;
+}
+
+.pip-count-9 .pip-5 {
+    top: 65%;
+    left: 20%;
+}
+
+.pip-count-9 .pip-6 {
+    top: 65%;
+    left: 80%;
+}
+
+.pip-count-9 .pip-7 {
+    top: 95%;
+    left: 20%;
+}
+
+.pip-count-9 .pip-8 {
+    top: 95%;
+    left: 80%;
+}
+
+.pip-count-9 .pip-9 {
+    top: 50%;
+    left: 50%;
+}
+
+/* 10: acht Symbole außen, plus zwei in der Mitte */
+.pip-count-10 .pip-1 {
+    top: 5%;
+    left: 20%;
+}
+
+.pip-count-10 .pip-2 {
+    top: 5%;
+    left: 80%;
+}
+
+.pip-count-10 .pip-3 {
+    top: 35%;
+    left: 20%;
+}
+
+.pip-count-10 .pip-4 {
+    top: 35%;
+    left: 80%;
+}
+
+.pip-count-10 .pip-5 {
+    top: 65%;
+    left: 20%;
+}
+
+.pip-count-10 .pip-6 {
+    top: 65%;
+    left: 80%;
+}
+
+.pip-count-10 .pip-7 {
+    top: 95%;
+    left: 20%;
+}
+
+.pip-count-10 .pip-8 {
+    top: 95%;
+    left: 80%;
+}
+
+.pip-count-10 .pip-9 {
+    top: 20%;
+    left: 50%;
+}
+
+.pip-count-10 .pip-10 {
+    top: 80%;
+    left: 50%;
+}
+
+/* Mittlerer Bereich für J, Q und K */
+.face-card {
+    position: absolute;
+    top: 26px;
+    right: 12px;
+    bottom: 26px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.face-suit-top {
+    margin-bottom: 75px;
+    position: relative;
+    left: 9px;
+}
+.face-suit-bottom {  
+    margin-top: 75px;
+    position: relative;
+    right: 9px;
+transform: rotate(180deg);
+}
+/* Emoji auf J, Q und K */
+.face-emoji {
+    font-size: 52px;
+    line-height: 1;
+}
+
+/* Großes Sortensymbol beim Ass */
+.ace-symbol {
+    position: absolute;
+    top: 24px;
+    right: 10px;
+    bottom: 24px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    line-height: 1;
+}
+
+.table {
+    height: 480px;
+    position: relative;
+    border: 1px solid #ffffff1a;
+    border-radius: 32px;
+    box-shadow: 0 20px 50px #0008;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.table.matte-green {
+    background-color: #063d22a1;
+}
+
+.table.matte-yellow {
+    background-color: #c49600b0;
+}
+
+.table.matte-brown {
+    background-color: #3a271cbb;
+}
+
+.table.matte-dark-red {
+    background-color: #6108109f;
+}
+
+.table.matte-dark-blue {
+    background-color: #032a4680;
+}
+
+.table.matte-dark-gray {
+    background-color: #4444469a;
+}
+
+.table::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    .op,
+    .trick,
+    .message {
+        z-index: 1;
+    }
+
+    background-image: radial-gradient(circle,
+        rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+    background-size: 14px 14px;
+    pointer-events: none;
+}
+.header-controls {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+gap: 10px;
+}
+
+/* Container der Combobox */
+.table-color-control {
+position: relative;
+width: 180px;
+height: 48px;
+flex: 0 0 180px;
+}
+
+/* Combobox */
+.table-color-control select {
+width: 100%;
+height: 100%;
+
+padding: 0 42px 0 16px;
+
+color: #f8fafc;
+background: linear-gradient(
+145deg,
+#182338,
+#0f172a
+);
+
+border: 1px solid #64748b;
+border-radius: 12px;
+outline: none;
+
+font-size: 16px;
+font-weight: 600;
+
+cursor: pointer;
+appearance: none;
+-webkit-appearance: none;
+box-shadow:
+0 5px 12px rgba(0, 0, 0, 0.24),
+inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+transition:
+border-color 0.2s ease,
+box-shadow 0.2s ease,
+background-color 0.2s ease;
+}
+
+/* Effekt beim Darüberfahren */
+.table-color-control select:hover {
+border-color: #94a3b8;
+background: linear-gradient(
+145deg,
+#202d44,
+#131e31
+);
+}
+
+/* Effekt beim Anklicken */
+.table-color-control select:focus {
+border-color: #38bdf8;
+box-shadow:
+0 0 0 3px rgba(56, 189, 248, 0.18),
+0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Optionen in der geöffneten Liste */
+.table-color-control option {
+color: #f8fafc;
+background-color: #172033;
+}
+
+/* Eigener Pfeil */
+.select-arrow {
+position: absolute;
+top: 50%;
+right: 15px;
+color: #cbd5e1;
+font-size: 11px;
+pointer-events: none;
+transform: translateY(-50%);
+}
+
+/* Neu-mischen-Button gleich groß wie die Combobox */
+.header-controls .header-button {
+width: 180px;
+height: 48px;
+flex: 0 0 180px;
+padding: 0 16px;
+border-radius: 12px;
+font-size: 16px;
+font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
 @media(max-width:640px) {
     main {
         padding: 8px
@@ -482,23 +942,8 @@ h1 {
         top: 51%
     }
 
-    .playing-card {
-        width: 68px;
-        height: 108px;
-        border-radius: 12px
-    }
-
-    .playing-card.small {
-        width: 54px;
-        height: 85px
-    }
-
     .rank {
         font-size: 16px
-    }
-
-    .symbol {
-        font-size: 22px
     }
 
     .thrown.top {
@@ -538,5 +983,11 @@ h1 {
     .quiz {
         padding: 16px;
         border-radius: 20px
+    }
+
+    .playing-card.small {
+        width: 96px;
+        height: 144px;
+        scale: 0.6;
     }
 }
